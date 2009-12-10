@@ -74,7 +74,11 @@ map <F10> :call MaxOrRestore()<CR>
 map <F9> :call CmdPromptHere()<CR>
 map <S-F9> :call ExplorerHere()<CR>
 map <F8> :call ChdirHere()<CR>
+map <Leader>t :NERDTreeToggle<CR>
+
+"Misc var settings
 let g:maxxedOut = "no"
+
 
 """"" Create a centered comment header (like this one) """""
 let width = 60
