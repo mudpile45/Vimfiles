@@ -1,3 +1,6 @@
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
 if has('win32')  " Windows settings
     " Paste
     map <S-Insert>      "+gP
