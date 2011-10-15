@@ -66,6 +66,8 @@ endif
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
+"make S-Tab unindent 
+imap <S-Tab> :exec "normal ld" . &tabstop . "h"i
 "Use Ctrl+PageUp/Down to switch buffers
 map <C-PageUp> :bp
 map <C-PageDown> :bn
