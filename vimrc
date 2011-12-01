@@ -62,12 +62,18 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+" Allow to write to files you don't have permissions for
+command W w !sudo tee % > /dev/null
+
 " Key mappings
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
 "make S-Tab unindent 
-imap <S-Tab> :exec "normal ld" . &tabstop . "h"i
+imap <S-Tab> <C-d>
+"Seems <S-Tab> doesn't work, so use this escape code
+imap [Z <C-d> 
+
 "Use Ctrl+PageUp/Down to switch buffers
 map <C-PageUp> :bp
 map <C-PageDown> :bn
