@@ -86,6 +86,9 @@ map <F9> :call CmdPromptHere()<CR>
 map <S-F9> :call ExplorerHere()<CR>
 map <F8> :call ChdirHere()<CR>
 map <Leader>t :NERDTreeToggle<CR>
+"On very rare occasions randomizing a list is useful
+"Below mapping binds it to a key
+map <Leader>r :%!perl -e 'use List::Util 'shuffle'; print shuffle(<>);'<cr>
 
 "Misc var settings
 let g:maxxedOut = "no"
@@ -231,9 +234,18 @@ function! ExplorerHere()
 endfunction
 
 function! ChdirHere()
-    let curPath = substitute(substitute(expand("%"), "\\", "/","g"), "[^/]*$","", "")
-    execute 'chdir ' . curPath
-    echo "Pwd changed to " . curPath
+    let thePath = substitute(substitute(expand("%"), "\\", "/","g"), "[^/]*$","", "") 
+    "take care of escaping spaces
+    let thePath = substitute(thePath, " ", "\\\\ ", "g")
+    let thePath = substitute(thePath, "/$","","")
+    execute 'cd ' . thePath 
+    "hack around to make the escaped spaces match vims functions
+    let thePath = substitute(thePath, "\\\\ ", " ", "g")
+    if  getcwd() == thePath
+        echo "Pwd changed to " . thePath
+    else
+        echo "Failed to change from " . getcwd() . " to " . thePath 
+    endif
 endfunction
 
 function! PerlDoc()
