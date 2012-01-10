@@ -89,7 +89,10 @@ map <Leader>t :NERDTreeToggle<CR>
 "On very rare occasions randomizing a list is useful
 "Below mapping binds it to a key
 map <Leader>r :%!perl -e 'use List::Util 'shuffle'; print shuffle(<>);'<cr>
-
+"copy current file's full path to system clipboard
+map <Leader>fn :let @+='"'.expand("%").'"'<cr>
+" the same but for only the working directory
+map <Leader>fp :let @+='"'.getcwd().'"'<cr>
 "Misc var settings
 let g:maxxedOut = "no"
 
