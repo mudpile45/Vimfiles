@@ -2,6 +2,8 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 if has('win32')  " Windows settings
+    " Fix Chinese characters
+    set guifontwide=NSimsun
     " Paste
     map <S-Insert>      "+gP
     " Copy
@@ -24,6 +26,8 @@ if has('gui_running')
 endif
 
 " allow backspacing over everything in insert mode
+set fileencoding=utf8
+set fileencodings=ucs-bom,utf8
 set backspace=indent,eol,start    
 set modelines=1
 set noswapfile
