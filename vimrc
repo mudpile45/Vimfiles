@@ -9,6 +9,9 @@ if has('win32')  " Windows settings
     " Cut
     vnoremap <S-Del> "+x
     behave mswin
+    "Enable mapping for Chinese font
+    map <Leader>U :set guifont=<CR>
+    map <Leader>u :set guifont=MingLiU:h10:cANSI<CR>
     if hostname() == "ONEIDA"
         " This mapping only gets used at work
         map <F2> mx:silent ! beautifyxml %:e`x
@@ -24,6 +27,8 @@ if has('gui_running')
 endif
 
 " allow backspacing over everything in insert mode
+set encoding=utf8
+set fileencoding=utf8
 set backspace=indent,eol,start    
 set modelines=1
 set noswapfile
@@ -63,7 +68,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Allow to write to files you don't have permissions for
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " Key mappings
 
