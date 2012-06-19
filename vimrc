@@ -71,6 +71,9 @@ command W w !sudo tee % > /dev/null
 map Q gq
 "make S-Tab unindent 
 imap <S-Tab> <C-d>
+"same for select mode
+vmap <S-Tab> <<
+vmap <Tab> >>
 "Seems <S-Tab> doesn't work, so use this escape code
 imap [Z <C-d> 
 
