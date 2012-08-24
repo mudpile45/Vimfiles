@@ -26,7 +26,6 @@ if has('gui_running')
     colors xoria256 
 endif
 
-" allow backspacing over everything in insert mode
 set encoding=utf8
 set fileencoding=utf8
 set backspace=indent,eol,start    
@@ -60,8 +59,9 @@ set smartcase			" but don't ignore it, when search string contains uppercase let
 set hidden 				" allow switching buffers, which have unsaved changes
 set shiftwidth=4		" 4 characters for indenting
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
+" Switch syntax highlighting on, when the terminal has
+" colors Also switch on highlighting the last used search
+" pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
@@ -70,15 +70,42 @@ endif
 " Allow to write to files you don't have permissions for
 command! W w !sudo tee % > /dev/null
 
+" Session saving options (for session.vim plugin)
+let g:session_autoload = "no"
+let g:session_autosave = "yes"
+let g:session_default_to_last = "yes"
+
 " Key mappings
-"Change to cwd mappings
-map <F8> :call ChdirHere()<CR>
+" Edit current .vimrc
+map <Leader>rc <Esc><C-w>n:e $MYVIMRC<CR>
+" Reload current .vimrc
+map <Leader>rrc <Esc>:source $MYVIMRC<CR>
+
+"Change to pwd mappings
+map <F8> :call ChdirHere()<CR> 
 map pwd :call ChdirHere()<CR>
 
-" "tComment is better but I'm used to nerdComment mappings...
-" so rather than relearn, just make Vim remap it
+" tComment is better but I'm used to nerdComment mappings...
+" so rather than retrain the fingers, just make Vim remap it
 vmap ,ci gc
-map ,ci gcc
+map ,ci gcc<Esc>
+
+" Buffer mappings
+map <Leader>bp <Esc>:bprev<CR>
+map <Leader>bn <Esc>:bnext<CR>
+map <Leader>bc <Esc>:bnew<CR>
+map <Leader>bc <Esc><C-W>n
+map <Leader>bd <Esc>:bd<CR>
+
+" Tab mappings
+map <Leader>tp <Esc>:tabprev<CR>
+map <Leader>tn <Esc>:tabnext<CR>
+map <Leader>tc <Esc>:tabnew<CR>
+map <Leader>td <Esc>:tabclose<CR>
+
+"Save session (using session plugin)
+map <Leader>ss <Esc>:SaveSession<CR>
+map <Leader>so <Esc>:OpenSession 
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -115,7 +142,7 @@ let g:maxxedOut = "no"
 """"" Create a centered comment header (like this one) """""
 let width = 60
 let char = "#"
-map  0$:let num = col("."):let num = (width/2) - ((num + 2)/2)0:exec "normal " . num . "i" . chara $ll:exec "normal " . num . "i" . char
+map <C-C> 0$:let num = col(".")<CR>:let num = (width/2) - ((num + 2)/2)<CR>0:exec "normal " . num . "i" . char<CR>a <Esc>$ll:exec "normal " . num . "i" . char<CR>
 """""""""""" End create centered comment headers """"""""""""
 
 " Only do this part when compiled with support for autocommands.
@@ -188,7 +215,7 @@ function! PerlOn()
     map <C-F11> :silent ! perl % && pause<CR>
     map <F11> :silent ! start perl -d %<CR>
     "Look up current word in perldoc
-    map  :call PerlDoc()
+    map  :call PerlDoc()<CR>
     map <F5> :silent ! perl -wc % > syntax.txt 2>&1<CR>vl:e syntax.txt<CR>h
 "   imap ( ()i
 "    imap < <>i 
