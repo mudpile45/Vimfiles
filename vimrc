@@ -71,6 +71,14 @@ endif
 command! W w !sudo tee % > /dev/null
 
 " Key mappings
+"Change to cwd mappings
+map <F8> :call ChdirHere()<CR>
+map pwd :call ChdirHere()<CR>
+
+" "tComment is better but I'm used to nerdComment mappings...
+" so rather than relearn, just make Vim remap it
+vmap ,ci gc
+map ,ci gcc
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -92,7 +100,6 @@ map <C-Right> :tabnext
 map <F10> :call MaxOrRestore()<CR>
 map <F9> :call CmdPromptHere()<CR>
 map <S-F9> :call ExplorerHere()<CR>
-map <F8> :call ChdirHere()<CR>
 map <Leader>t :NERDTreeToggle<CR>
 "On very rare occasions randomizing a list is useful
 "Below mapping binds it to a key
