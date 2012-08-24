@@ -81,14 +81,19 @@ map <Leader>rc <Esc><C-w>n:e $MYVIMRC<CR>
 " Reload current .vimrc
 map <Leader>rrc <Esc>:source $MYVIMRC<CR>
 
-"Change to pwd mappings
+"Change to cwd mappings
 map <F8> :call ChdirHere()<CR> 
-map pwd :call ChdirHere()<CR>
+map cwd :rall ChdirHere()<CR>
 
 " tComment is better but I'm used to nerdComment mappings...
 " so rather than retrain the fingers, just make Vim remap it
 vmap ,ci gc
 map ,ci gcc<Esc>
+
+" ConqueShell mappings
+map <Leader>cs <Esc>:ConqueTerm bash<CR>
+map <Leader>css <Esc>:ConqueTermSplit bash<CR>
+map <Leader>cv <Esc>:ConqueTermVSplit bash<CR>
 
 " Buffer mappings
 map <Leader>bp <Esc>:bprev<CR>
@@ -96,6 +101,7 @@ map <Leader>bn <Esc>:bnext<CR>
 map <Leader>bc <Esc>:bnew<CR>
 map <Leader>bc <Esc><C-W>n
 map <Leader>bd <Esc>:bd<CR>
+map <Leader>bD <Esc>:bd!<CR>
 
 " Tab mappings
 map <Leader>tp <Esc>:tabprev<CR>
