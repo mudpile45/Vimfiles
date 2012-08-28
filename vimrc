@@ -72,7 +72,7 @@ command! W w !sudo tee % > /dev/null
 
 " Session saving options (for session.vim plugin)
 let g:session_autoload = "no"
-let g:session_autosave = "yes"
+" let g:session_autosave = "yes"
 let g:session_default_to_last = "yes"
 
 " Key mappings
@@ -83,7 +83,7 @@ map <Leader>rrc <Esc>:source $MYVIMRC<CR>
 
 "Change to cwd mappings
 map <F8> :call ChdirHere()<CR> 
-map cwd :rall ChdirHere()<CR>
+map cwd :call ChdirHere()<CR>
 
 " tComment is better but I'm used to nerdComment mappings...
 " so rather than retrain the fingers, just make Vim remap it
