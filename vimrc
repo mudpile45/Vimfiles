@@ -52,7 +52,7 @@ set tabstop=4
 set number				" line numbers
 set cindent
 set autoindent
-set mouse=a				" use mouse in xterm to scroll
+" set mouse=a				" use mouse in xterm to scroll
 set scrolloff=5 		" 5 lines bevore and after the current line when scrolling
 set ignorecase			" ignore case
 set smartcase			" but don't ignore it, when search string contains uppercase letters
