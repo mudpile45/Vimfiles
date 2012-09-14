@@ -83,13 +83,6 @@ map <Leader>rc <Esc><C-w>n:e $MYVIMRC<CR>
 " Reload current .vimrc
 map <Leader>rrc <Esc>:source $MYVIMRC<CR>
 
-" Make window resizing sane
-    map + <C-w>+
-    "Use underscore so that you can hold shift
-    map _ <C-w>- 
-    map = <C-w>>
-    map - <C-w><
-
 "Change to cwd mappings
 map <F8> :call ChdirHere()<CR> 
 map cwd :call ChdirHere()<CR>
