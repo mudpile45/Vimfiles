@@ -52,7 +52,6 @@ set tabstop=4
 set number				" line numbers
 set cindent
 set autoindent
-" set mouse=a				" use mouse in xterm to scroll
 set scrolloff=5 		" 5 lines bevore and after the current line when scrolling
 set ignorecase			" ignore case
 set smartcase			" but don't ignore it, when search string contains uppercase letters
@@ -75,11 +74,21 @@ let g:session_autoload = "no"
 " let g:session_autosave = "yes"
 let g:session_default_to_last = "yes"
 
-" Key mappings
+"###################### Key mappings #######################
+
+" Toggle mouse support
+map <Leader>m <Esc>:call Toggle_mouse()<CR>
 " Edit current .vimrc
 map <Leader>rc <Esc><C-w>n:e $MYVIMRC<CR>
 " Reload current .vimrc
 map <Leader>rrc <Esc>:source $MYVIMRC<CR>
+
+" Make window resizing sane
+    map + <C-w>+
+    "Use underscore so that you can hold shift
+    map _ <C-w>- 
+    map = <C-w>>
+    map - <C-w><
 
 "Change to cwd mappings
 map <F8> :call ChdirHere()<CR> 
@@ -209,6 +218,16 @@ let g:perlOn = "no"
 "            endif
 "            silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 "endfunction
+
+function! Toggle_mouse()
+    if &mouse == "a"
+        set mouse=
+        echo "Mouse support disabled"
+    else
+        set mouse=a
+        echo "Mouse support enabled"
+    endif
+endfunction
 
 autocmd BufEnter *.pl call PerlOn()
 autocmd BufLeave *.pl call PerlOff()
