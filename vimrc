@@ -11,6 +11,9 @@ if has('win32')  " Windows settings
     " Cut
     vnoremap <S-Del> "+x
     behave mswin
+    "Enable mapping for Chinese font
+    map <Leader>U :set guifont=<CR>
+    map <Leader>u :set guifont=MingLiU:h10:cANSI<CR>
     if hostname() == "ONEIDA"
         " This mapping only gets used at work
         map <F2> mx:silent ! beautifyxml %:e`x
@@ -52,29 +55,76 @@ set tabstop=4
 set number				" line numbers
 set cindent
 set autoindent
-set mouse=a				" use mouse in xterm to scroll
 set scrolloff=5 		" 5 lines bevore and after the current line when scrolling
 set ignorecase			" ignore case
 set smartcase			" but don't ignore it, when search string contains uppercase letters
 set hidden 				" allow switching buffers, which have unsaved changes
 set shiftwidth=4		" 4 characters for indenting
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
+" Switch syntax highlighting on, when the terminal has
+" colors Also switch on highlighting the last used search
+" pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
 
 " Allow to write to files you don't have permissions for
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
-" Key mappings
+" Session saving options (for session.vim plugin)
+let g:session_autoload = "no"
+" let g:session_autosave = "yes"
+let g:session_default_to_last = "yes"
+
+"###################### Key mappings #######################
+
+" Toggle mouse support
+map <Leader>m <Esc>:call Toggle_mouse()<CR>
+" Edit current .vimrc
+map <Leader>rc <Esc><C-w>n:e $MYVIMRC<CR>
+" Reload current .vimrc
+map <Leader>rrc <Esc>:source $MYVIMRC<CR>
+
+"Change to cwd mappings
+map <F8> :call ChdirHere()<CR> 
+map cwd :call ChdirHere()<CR>
+
+" tComment is better but I'm used to nerdComment mappings...
+" so rather than retrain the fingers, just make Vim remap it
+vmap ,ci gc
+map ,ci gcc<Esc>
+
+" ConqueShell mappings
+map <Leader>cs <Esc>:ConqueTerm bash<CR>
+map <Leader>css <Esc>:ConqueTermSplit bash<CR>
+map <Leader>cv <Esc>:ConqueTermVSplit bash<CR>
+
+" Buffer mappings
+map <Leader>bp <Esc>:bprev<CR>
+map <Leader>bn <Esc>:bnext<CR>
+map <Leader>bc <Esc>:bnew<CR>
+map <Leader>bc <Esc><C-W>n
+map <Leader>bd <Esc>:bd<CR>
+map <Leader>bD <Esc>:bd!<CR>
+
+" Tab mappings
+map <Leader>tp <Esc>:tabprev<CR>
+map <Leader>tn <Esc>:tabnext<CR>
+map <Leader>tc <Esc>:tabnew<CR>
+map <Leader>td <Esc>:tabclose<CR>
+
+"Save session (using session plugin)
+map <Leader>ss <Esc>:SaveSession<CR>
+map <Leader>so <Esc>:OpenSession 
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
 "make S-Tab unindent 
 imap <S-Tab> <C-d>
+"same for select mode
+vmap <S-Tab> <<
+vmap <Tab> >>
 "Seems <S-Tab> doesn't work, so use this escape code
 imap [Z <C-d> 
 
@@ -88,7 +138,6 @@ map <C-Right> :tabnext
 map <F10> :call MaxOrRestore()<CR>
 map <F9> :call CmdPromptHere()<CR>
 map <S-F9> :call ExplorerHere()<CR>
-map <F8> :call ChdirHere()<CR>
 map <Leader>t :NERDTreeToggle<CR>
 "On very rare occasions randomizing a list is useful
 "Below mapping binds it to a key
@@ -104,7 +153,7 @@ let g:maxxedOut = "no"
 """"" Create a centered comment header (like this one) """""
 let width = 60
 let char = "#"
-map  0$:let num = col("."):let num = (width/2) - ((num + 2)/2)0:exec "normal " . num . "i" . chara $ll:exec "normal " . num . "i" . char
+map <C-C> 0$:let num = col(".")<CR>:let num = (width/2) - ((num + 2)/2)<CR>0:exec "normal " . num . "i" . char<CR>a <Esc>$ll:exec "normal " . num . "i" . char<CR>
 """""""""""" End create centered comment headers """"""""""""
 
 " Only do this part when compiled with support for autocommands.
@@ -166,6 +215,16 @@ let g:perlOn = "no"
 "            silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 "endfunction
 
+function! Toggle_mouse()
+    if &mouse == "a"
+        set mouse=
+        echo "Mouse support disabled"
+    else
+        set mouse=a
+        echo "Mouse support enabled"
+    endif
+endfunction
+
 autocmd BufEnter *.pl call PerlOn()
 autocmd BufLeave *.pl call PerlOff()
 autocmd BufEnter *.pm call PerlOn()
@@ -177,7 +236,7 @@ function! PerlOn()
     map <C-F11> :silent ! perl % && pause<CR>
     map <F11> :silent ! start perl -d %<CR>
     "Look up current word in perldoc
-    map  :call PerlDoc()
+    map  :call PerlDoc()<CR>
     map <F5> :silent ! perl -wc % > syntax.txt 2>&1<CR>vl:e syntax.txt<CR>h
 "   imap ( ()i
 "    imap < <>i 
