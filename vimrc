@@ -324,19 +324,22 @@ function! PerlDoc()
     let theLine = getline(".")
     if match(theLine, "^use.*;$") >= 0  "Is a use statement (and thus also a perl module)
         let moduleName = substitute(theLine, "use \\([^ ;]*\\).*", "\\1", "")
-        let result = system("perldoc " . moduleName)
+        let result = system("perldoc -t 2>/dev/null " . moduleName)
     elseif match(theLine, "::") >= 0   "Is a perl module
         let moduleName = substitute(theLine, "^.* \\(\\w*::[^ ;]*\\).*", "\\1","")
-        let result = system("perldoc " . moduleName)
+        let result = system("perldoc -t 2>/dev/null " . moduleName)
     else
         let temp = @a
         exec "normal miwb\"ayw`i"   
-        let result = system("perldoc -f " . @a)
+        let result = system("perldoc -t -f " . @a)
         let @a = temp
     endif
     let temp = @a
     let @a = result
     exec "normal n\"aP"
+    set buftype=nofile
+    set bufhidden=hide
+    setlocal noswapfile
     let @a = temp
 endfunction
 "endif
