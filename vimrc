@@ -1,5 +1,4 @@
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
 
 if has('win32')  " Windows settings
     " Fix Chinese characters
