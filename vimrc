@@ -152,7 +152,7 @@ let g:maxxedOut = "no"
 """"" Create a centered comment header (like this one) """""
 let width = 60
 let char = "#"
-map <C-C> 0$:let num = col(".")<CR>:let num = (width/2) - ((num + 2)/2)<CR>0:exec "normal " . num . "i" . char<CR>a <Esc>$ll:exec "normal " . num . "i" . char<CR>
+map <Leader>c 0$:let num = col(".")<CR>:let num = (width/2) - ((num + 2)/2)<CR>0:exec "normal " . num . "i" . char<CR>a <Esc>$ll:exec "normal " . num . "i" . char<CR>
 """""""""""" End create centered comment headers """"""""""""
 
 " Only do this part when compiled with support for autocommands.
