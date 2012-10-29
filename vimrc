@@ -122,6 +122,9 @@ map Q gq
 vmap <S-Tab> <gv
 vmap [Z <gv
 vmap <Tab> >gv
+" Reselect selected area after indent to allow for continuous indenting
+vmap > >gv
+vmap < <gv
 "Seems <S-Tab> doesn't work very well, so use this escape code
 imap [Z <C-d>
 imap <Tab> <C-t>
