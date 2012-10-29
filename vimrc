@@ -27,10 +27,9 @@ if has('gui_running')
     colors xoria256 
 endif
 
-" allow backspacing over everything in insert mode
 set fileencoding=utf8
 set fileencodings=ucs-bom,utf8
-set backspace=indent,eol,start    
+set backspace=indent,eol,start    " allow backspacing over everything in insert mode
 set modelines=1
 set noswapfile
 set wildmode=list:longest  "Make filename completion work like bash's
@@ -77,7 +76,6 @@ let g:session_autoload = "no"
 let g:session_default_to_last = "yes"
 
 "###################### Key mappings #######################
-
 " Toggle mouse support
 map <Leader>m <Esc>:call Toggle_mouse()<CR>
 " Edit current .vimrc
@@ -120,12 +118,13 @@ map <Leader>so <Esc>:OpenSession
 " Don't use Ex mode, use Q for formatting
 map Q gq
 "make S-Tab unindent 
-imap <S-Tab> <C-d>
 "same for select mode
-vmap <S-Tab> <<
-vmap <Tab> >>
-"Seems <S-Tab> doesn't work, so use this escape code
-imap [Z <C-d> 
+vmap <S-Tab> <gv
+vmap [Z <gv
+vmap <Tab> >gv
+"Seems <S-Tab> doesn't work very well, so use this escape code
+imap [Z <C-d>
+imap <Tab> <C-t>
 
 "Use Ctrl+PageUp/Down to switch buffers
 map <C-PageUp> :bp
