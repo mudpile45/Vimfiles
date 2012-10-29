@@ -76,6 +76,8 @@ let g:session_autoload = "no"
 let g:session_default_to_last = "yes"
 
 "###################### Key mappings #######################
+" Toggle numbers
+map <Leader>n <Esc>:call Toggle_number()<CR>
 " Toggle mouse support
 map <Leader>m <Esc>:call Toggle_mouse()<CR>
 " Edit current .vimrc
@@ -216,13 +218,21 @@ let g:perlOn = "no"
 "            silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 "endfunction
 
-function! Toggle_mouse()
+function! Toggle_num()
     if &mouse == "a"
         set mouse=
         echo "Mouse support disabled"
     else
         set mouse=a
         echo "Mouse support enabled"
+    endif
+endfunction
+
+function! Toggle_number()
+    if &number == 1
+        set nonumber
+    else
+        set number
     endif
 endfunction
 
