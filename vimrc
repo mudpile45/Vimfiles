@@ -58,6 +58,7 @@ set ignorecase			" ignore case
 set smartcase			" but don't ignore it, when search string contains uppercase letters
 set hidden 				" allow switching buffers, which have unsaved changes
 set shiftwidth=4		" 4 characters for indenting
+set omnifunc=syntaxcomplete#Complete
 
 " Switch syntax highlighting on, when the terminal has
 " colors Also switch on highlighting the last used search
@@ -127,11 +128,15 @@ vmap <Tab> >gv
 " Reselect selected area after indent to allow for continuous indenting
 vmap > >gv
 vmap < <gv
+" And allow using tab and shift-tab to in/de-dent as well it in insert mode
 "Seems <S-Tab> doesn't work very well, so use this escape code
-imap [Z <C-d>
 imap <Tab> <C-t>
+imap [Z <C-d>
 map [Z <<
 map <Tab> >>
+
+" Omnicomplete with <C-c> (pnemonic 'complete')
+imap <C-c> <C-x><C-o>
 
 "Use Ctrl+PageUp/Down to switch buffers
 map <C-PageUp> :bp
