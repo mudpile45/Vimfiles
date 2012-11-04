@@ -130,6 +130,8 @@ vmap < <gv
 "Seems <S-Tab> doesn't work very well, so use this escape code
 imap [Z <C-d>
 imap <Tab> <C-t>
+map [Z <<
+map <Tab> >>
 
 "Use Ctrl+PageUp/Down to switch buffers
 map <C-PageUp> :bp
