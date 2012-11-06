@@ -225,7 +225,7 @@ let g:perlOn = "no"
 "            silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 "endfunction
 
-function! Toggle_num()
+function! Toggle_mouse()
     if &mouse == "a"
         set mouse=
         echo "Mouse support disabled"
