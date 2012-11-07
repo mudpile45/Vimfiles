@@ -90,6 +90,17 @@ map <Leader>rrc <Esc>:source $MYVIMRC<CR>
 map <F8> :call ChdirHere()<CR> 
 map cwd :call ChdirHere()<CR>
 
+" Move to middle of line
+map m :exe "normal ".(virtcol("$")/2)."\|"<CR>
+
+" Remap j and k to move visually instead of by actual line
+" map arrow keys to preserve original functionality
+noremap <Up> k
+noremap <Down> j
+noremap j gj
+noremap k gk
+
+
 " tComment is better but I'm used to nerdComment mappings...
 " so rather than retrain the fingers, just make Vim remap it
 vmap ,ci gc
