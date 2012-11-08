@@ -91,7 +91,7 @@ map <F8> :call ChdirHere()<CR>
 map cwd :call ChdirHere()<CR>
 
 " Move to middle of line
-map m :exe "normal ".(virtcol("$")/2)."\|"<CR>
+map <Leader>m :exe "normal ".(virtcol("$")/2)."\|"<CR>
 
 " Remap j and k to move visually instead of by actual line
 " map arrow keys to preserve original functionality
