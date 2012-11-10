@@ -77,6 +77,8 @@ let g:session_autoload = "no"
 let g:session_default_to_last = "yes"
 
 "###################### Key mappings #######################
+" Autocomplete an HTML tag (from insert mode)
+imap <C-a> </<C-x><C-o><Esc>==$a
 " Toggle numbers
 map <Leader>n <Esc>:call Toggle_number()<CR>
 " Toggle mouse support
