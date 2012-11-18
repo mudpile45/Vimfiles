@@ -59,6 +59,16 @@ set smartcase			" but don't ignore it, when search string contains uppercase let
 set hidden 				" allow switching buffers, which have unsaved changes
 set shiftwidth=4		" 4 characters for indenting
 set omnifunc=syntaxcomplete#Complete
+set pastetoggle=<Leader>p
+
+" Enable persistent undo (I guess only for vim 7.3)
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=10000 "maximum number of changes that can be undone
+set undoreload=100000 "maximum number lines to save for undo on a buffer reload
+
+" Always show status bar
+set laststatus=2
 
 " Switch syntax highlighting on, when the terminal has
 " colors Also switch on highlighting the last used search
