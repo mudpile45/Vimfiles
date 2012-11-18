@@ -62,6 +62,16 @@ set omnifunc=syntaxcomplete#Complete
 " folds are nice, but not till i want them
 set foldmethod=indent
 set foldlevel=10
+set pastetoggle=<Leader>p
+
+" Enable persistent undo (I guess only for vim 7.3)
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=10000 "maximum number of changes that can be undone
+set undoreload=100000 "maximum number lines to save for undo on a buffer reload
+
+" Always show status bar
+set laststatus=2
 
 " Switch syntax highlighting on, when the terminal has
 " colors Also switch on highlighting the last used search
