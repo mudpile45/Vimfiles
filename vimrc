@@ -59,6 +59,9 @@ set smartcase			" but don't ignore it, when search string contains uppercase let
 set hidden 				" allow switching buffers, which have unsaved changes
 set shiftwidth=4		" 4 characters for indenting
 set omnifunc=syntaxcomplete#Complete
+" folds are nice, but not till i want them
+set foldmethod=indent
+set foldlevel=10
 
 " Switch syntax highlighting on, when the terminal has
 " colors Also switch on highlighting the last used search
