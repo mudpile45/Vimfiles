@@ -22,10 +22,6 @@ else
     let $EDITOR="vim"
 endif    
 
-if has('gui_running')
-    "colors torte
-    colors xoria256 
-endif
 
 set fileencoding=utf8
 set fileencodings=ucs-bom,utf8
@@ -79,6 +75,9 @@ set laststatus=2
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  if &t_Co >= 256
+      colors xoria256 
+  endif
 endif
 
 " Allow to write to files you don't have permissions for
