@@ -61,10 +61,12 @@ set foldlevel=10
 set pastetoggle=<Leader>p
 
 " Enable persistent undo (I guess only for vim 7.3)
-set undodir=~/.vim/undodir
-set undofile
-set undolevels=10000 "maximum number of changes that can be undone
-set undoreload=100000 "maximum number lines to save for undo on a buffer reload
+if v:version >= 703 
+    set undodir=~/.vim/undodir
+    set undofile
+    set undolevels=10000 "maximum number of changes that can be undone
+    set undoreload=100000 "maximum number lines to save for undo on a buffer reload
+endif 
 
 " Always show status bar
 set laststatus=2
@@ -75,7 +77,7 @@ set laststatus=2
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  if &t_Co >= 256
+  if &t_Co >= 256 || has("gui_running")
       colors xoria256 
   endif
 endif
