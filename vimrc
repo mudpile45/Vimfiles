@@ -102,6 +102,9 @@ map <Leader>rc <Esc><C-w>n:e $MYVIMRC<CR>
 " Reload current .vimrc
 map <Leader>rrc <Esc>:source $MYVIMRC<CR>
 
+" Open yankring
+map <Leader>yr :YRShow<CR>
+
 "Change to cwd mappings
 map <F8> :call ChdirHere()<CR> 
 map cwd :call ChdirHere()<CR>
