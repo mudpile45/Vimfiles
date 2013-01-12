@@ -104,13 +104,16 @@ map <Leader>rrc <Esc>:source $MYVIMRC<CR>
 
 " Open yankring
 map <Leader>yr :YRShow<CR>
+" make Y yank to end of line rather than yanking whole line to be consistent
+" with C and D
+nnoremap Y y$
 
 "Change to cwd mappings
 map <F8> :call ChdirHere()<CR> 
-map cwd :call ChdirHere()<CR>
+map <Leader>cd :call ChdirHere()<CR>
 
 " Move to middle of line
-map <Leader>m :exe "normal ".(virtcol("$")/2)."\|"<CR>
+map <Leader>\| :exe "normal ".(virtcol("$")/2)."\|"<CR>
 
 " Remap j and k to move visually instead of by actual line
 " map arrow keys to preserve original functionality
