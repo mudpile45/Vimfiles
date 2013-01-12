@@ -118,6 +118,8 @@ noremap <Up> k
 noremap <Down> j
 noremap j gj
 noremap k gk
+noremap gj j
+noremap gk k
 
 
 " tComment is better but I'm used to nerdComment mappings...
