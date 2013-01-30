@@ -1,5 +1,10 @@
 call pathogen#infect()
 
+" Plugin initializations
+autocmd FileType javascript
+  \ :setl omnifunc=jscomplete#CompleteJS
+let g:node_usejscomplete = 1
+
 if has('win32')  " Windows settings
     " Fix Chinese characters
     set guifontwide=NSimsun
