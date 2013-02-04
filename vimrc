@@ -162,18 +162,18 @@ map <Leader>so <Esc>:OpenSession
 map Q gq
 "make S-Tab unindent 
 "same for select mode
-vmap <S-Tab> <gv
-vmap [Z <gv
-vmap <Tab> >gv
+" vmap <S-Tab> <gv
+" vmap [Z <gv
+" vmap <Tab> >gv
 " Reselect selected area after indent to allow for continuous indenting
 vmap > >gv
 vmap < <gv
 " And allow using tab and shift-tab to in/de-dent as well it in insert mode
 "Seems <S-Tab> doesn't work very well, so use this escape code
-imap <Tab> <C-t>
-imap [Z <C-d>
-map [Z <<
-map <Tab> >>
+" imap <Tab> <C-t>
+" imap [Z <C-d>
+" map [Z <<
+" map <Tab> >>
 
 " Omnicomplete with <C-c> (pnemonic 'complete')
 imap <C-c> <C-x><C-o>
