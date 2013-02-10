@@ -7,6 +7,9 @@ let g:node_usejscomplete = 1
 
 let g:UltiSnipsListSnippets = "<Leader><tab>"
 
+" Use OS X clipboard even inside tmux sessions
+let g:fakeclip_terminal_multiplexer_type = "unknown"
+
 if has('win32')  " Windows settings
     " Fix Chinese characters
     set guifontwide=NSimsun
@@ -188,8 +191,8 @@ map <C-Left> :tabprev
 map <C-Right> :tabnext
 
 map <F10> :call MaxOrRestore()<CR>
-map <F9> :call CmdPromptHere()<CR>
-map <S-F9> :call ExplorerHere()<CR>
+map <Leader>cmd :call CmdPromptHere()<CR>
+map <Leader>fi :call ExplorerHere()<CR>
 map <Leader>t :NERDTreeToggle<CR>
 "On very rare occasions randomizing a list is useful
 "Below mapping binds it to a key
@@ -336,12 +339,13 @@ endfunction
 
 function! CmdPromptHere()
     let vimPath = getcwd()
-    let curPath = substitute(substitute(expand("%"), "\\", "/","g"), "[^/]*$","", "")
-    execute 'chdir ' . curPath
+    call ChdirHere()
     if has("win32")
         silent execute '! start cmd'
     elseif has("mac")
-        silent execute '! open /Applications/Utilities/Terminal.app/'
+        " Should really move this out to a plugin, for now rely iTerm.sh
+        " utility in DB path (stolen from sublime)
+        silent execute '! iTerm.sh '
     endif
     execute ':chdir ' . vimPath
 endfunction
@@ -349,14 +353,13 @@ endfunction
 function! ExplorerHere()
     let vimPath = getcwd()
     let curPath = substitute(substitute(expand("%"), "\\", "/","g"), "[^/]*$","", "")
-    execute 'chdir ' . curPath
+    call ChdirHere()
     if has("win32")
         silent execute '! start .'
     elseif has("mac")
         silent execute '! open .'
     endif
     execute ':chdir ' . vimPath
-    echo "Explorer opened at " . curPath
 endfunction
 
 function! ChdirHere()
