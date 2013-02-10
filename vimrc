@@ -6,6 +6,7 @@ autocmd FileType javascript
 let g:node_usejscomplete = 1
 
 let g:UltiSnipsListSnippets = "<Leader><tab>"
+let g:ctrlp_map = '<Leader>o'
 
 " Use OS X clipboard even inside tmux sessions
 let g:fakeclip_terminal_multiplexer_type = "unknown"
@@ -114,9 +115,14 @@ map <Leader>rrc <Esc>:source $MYVIMRC<CR>
 
 " Open yankring
 map <Leader>yr :YRShow<CR>
+nnoremap Y y$
 " make Y yank to end of line rather than yanking whole line to be consistent
 " with C and D
 nnoremap Y y$
+" Yankring compatible version of above
+function! YRRunAfterMaps()
+    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+endfunction
 
 "Change to cwd mappings
 map <F8> :call ChdirHere()<CR> 
@@ -340,13 +346,13 @@ endfunction
 function! CmdPromptHere()
     let vimPath = getcwd()
     call ChdirHere()
-    if has("win32")
-        silent execute '! start cmd'
-    elseif has("mac")
+    " if has("win32")
+    "     silent execute '! start cmd'
+    " elseif has("mac")
         " Should really move this out to a plugin, for now rely iTerm.sh
         " utility in DB path (stolen from sublime)
         silent execute '! iTerm.sh '
-    endif
+    " endif
     execute ':chdir ' . vimPath
 endfunction
 
