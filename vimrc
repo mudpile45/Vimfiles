@@ -5,6 +5,8 @@ autocmd FileType javascript
   \ :setl omnifunc=jscomplete#CompleteJS
 let g:node_usejscomplete = 1
 
+let g:UltiSnipsListSnippets = "<Leader><tab>"
+
 if has('win32')  " Windows settings
     " Fix Chinese characters
     set guifontwide=NSimsun
