@@ -7,6 +7,7 @@ let g:node_usejscomplete = 1
 
 let g:UltiSnipsListSnippets = "<Leader><tab>"
 let g:ctrlp_map = '<Leader>o'
+map <Leader>i :IndentGuidesToggle<CR>
 
 " Use OS X clipboard even inside tmux sessions
 let g:fakeclip_terminal_multiplexer_type = "unknown"
