@@ -6,7 +6,16 @@ autocmd FileType javascript
 let g:node_usejscomplete = 1
 
 let g:UltiSnipsListSnippets = "<Leader><tab>"
+
+" CtrlP customizations
 let g:ctrlp_map = '<Leader>o'
+map ,m :CtrlPMRU<CR>
+map ,b :CtrlPBuffer<CR>
+map ,f :CtrlP<CR>
+
+let g:ctrlp_custom_ignore = {
+            \ 'dir':  'node_modules',
+            \}
 map <Leader>i :IndentGuidesToggle<CR>
 
 " Use OS X clipboard even inside tmux sessions
