@@ -17,7 +17,6 @@ map ,f :CtrlP<CR>
 " Make orgmode use the current file
 "     This is needed so that todo <Leader>cat and Agenda <Leader>caL modes work
 map <Leader>cac :let g:org_agenda_files = [expand("%")]<CR>
-
 map <Leader>cah :silent ! emacs -batch --visit="%" --funcall org-export-as-html-batch<CR>
 map <Leader>cam :silent ! emacs -batch --visit="%" --funcall org-export-as-html-batch; pandoc -s "%:r".html -t markdown_strict > "%:r".md<CR>
 
