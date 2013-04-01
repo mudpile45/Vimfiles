@@ -203,7 +203,6 @@ vmap < <gv
 " select just pasted text (and preserve mode)
 " from: http://vim.wikia.com/wiki/Selecting_your_pasted_text
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " 
 " And allow using tab and shift-tab to in/de-dent as well it in insert mode
 "Seems <S-Tab> doesn't work very well, so use this escape code
