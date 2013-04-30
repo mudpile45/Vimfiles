@@ -8,15 +8,16 @@ let g:node_usejscomplete = 1
 let g:UltiSnipsListSnippets = "<Leader><tab>"
 
 " CtrlP customizations
+let mapleader=","
 let g:ctrlp_map = '<Leader>o'
 let g:ctrlp_switch_buffer = 0
-map ,m :CtrlPMRU<CR>
-map ,b :CtrlPBuffer<CR>
-map ,f :CtrlP<CR>
+map <Leader>m :CtrlPMRU<CR>
+map <Leader>b :CtrlPBuffer<CR>
+map <Leader>f :CtrlP<CR>
 
 " Make orgmode use the current file
 "     This is needed so that todo <Leader>cat and Agenda <Leader>caL modes work
-map <Leader>cac :let g:org_agenda_files = [expand("%")]<CR>
+map <Leader>cac :let g:org_agenda_files = [expand("%:p")]<CR>
 map <Leader>cah :silent ! emacs -batch --visit="%" --funcall org-export-as-html-batch<CR>
 map <Leader>cam :silent ! emacs -batch --visit="%" --funcall org-export-as-html-batch; pandoc -s "%:r".html -t markdown_strict > "%:r".md<CR>
 
@@ -88,6 +89,7 @@ set omnifunc=syntaxcomplete#Complete
 set foldmethod=indent
 set foldlevel=10
 set pastetoggle=<Leader>p
+set relativenumber      "Make line numbers relative to where you currently are
 
 " Enable persistent undo (I guess only for vim 7.3)
 if v:version >= 703 
@@ -120,12 +122,18 @@ let g:session_autoload = "no"
 let g:session_default_to_last = "yes"
 
 "###################### Key mappings #######################
+" Make regex search properly magical (\v means you don't need to use a \
+" before parenthesis etc.)
+nnoremap / /\v
+vnoremap / /\v
+" clear search with <Leader><Space>
+nnoremap <leader><space> :noh<cr>
 " Autocomplete an HTML tag (from insert mode)
 imap <C-a> </<C-x><C-o><Esc>==$a
-" Toggle numbers
+" Toggle line numbers
 map <Leader>n <Esc>:call Toggle_number()<CR>
 " Toggle mouse support
-map <Leader>m <Esc>:call Toggle_mouse()<CR>
+map <Leader>mo <Esc>:call Toggle_mouse()<CR>
 " Edit current .vimrc
 map <Leader>rc <Esc><C-w>n:e $MYVIMRC<CR>
 " Reload current .vimrc
@@ -165,9 +173,9 @@ vmap ,ci gc
 map ,ci gcc<Esc>
 
 " ConqueShell mappings
-map <Leader>cs <Esc>:ConqueTerm bash<CR>
-map <Leader>css <Esc>:ConqueTermSplit bash<CR>
-map <Leader>cv <Esc>:ConqueTermVSplit bash<CR>
+" map <Leader>cs <Esc>:ConqueTerm bash<CR>
+" map <Leader>css <Esc>:ConqueTermSplit bash<CR>
+" map <Leader>cv <Esc>:ConqueTermVSplit bash<CR>
 
 " Buffer mappings
 map <Leader>bp <Esc>:bprev<CR>
@@ -186,6 +194,9 @@ map <Leader>td <Esc>:tabclose<CR>
 "Save session (using session plugin)
 map <Leader>ss <Esc>:SaveSession<CR>
 map <Leader>so <Esc>:OpenSession 
+
+" Open coffeescript preview
+map <Leader>csp <Esc>:CoffeePreviewToggle<CR>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -233,14 +244,13 @@ map <Leader>fn :let @+='"'.expand("%").'"'<cr>
 " the same but for only the working directory
 map <Leader>fp :let @+='"'.getcwd().'"'<cr>
 "Misc var settings
-let g:maxxedOut = "no"
-
-
+map <Leader>gu <Esc>:GundoToggle<CR>
 """"" Create a centered comment header (like this one) """""
-let width = 60
-let char = "#"
-map <Leader>c 0$:let num = col(".")<CR>:let num = (width/2) - ((num + 2)/2)<CR>0:exec "normal " . num . "i" . char<CR>a <Esc>$ll:exec "normal " . num . "i" . char<CR>
+map <Leader>cc <Esc>:let tmp=@z<CR>0"zY<Esc>:let @z = CreateHeader(@z)<CR>V"zP<Esc>:let @z=tmp<CR>
 """""""""""" End create centered comment headers """"""""""""
+
+" Map gp to select just pasted text
+noremap gp V`]
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -312,10 +322,13 @@ function! Toggle_mouse()
 endfunction
 
 function! Toggle_number()
+    "Toggles between relative line #s, standard line #s and no numbering
     if &number == 1
         set nonumber
-    else
+    elseif &relativenumber == 1
         set number
+    elseif &relativenumber == 0 && &number == 0
+        set relativenumber
     endif
 endfunction
 
@@ -376,7 +389,8 @@ function! CmdPromptHere()
     " elseif has("mac")
         " Should really move this out to a plugin, for now rely iTerm.sh
         " utility in DB path (stolen from sublime)
-        silent execute '! iTerm.sh '
+        " silent execute '! iTerm.sh '
+        silent execute '! Terminal.sh '
     " endif
     execute ':chdir ' . vimPath
 endfunction
@@ -439,6 +453,7 @@ endfunction
 "endif
 
 function! CreateHeader(string, ...)
+    " CreateHeader(string, delim)
     if a:string == ""
         exec "normal! \"ay"
         let string = @a
@@ -450,7 +465,7 @@ function! CreateHeader(string, ...)
     else
         let delim = a:1
     endif
-    let width = 80
+    let width = &textwidth
     let startPos = (width / 2) - (len(string) / 2)
     let i = 0
     let result = ""
