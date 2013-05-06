@@ -234,7 +234,7 @@ map <C-Right> :tabnext
 
 map <F10> :call MaxOrRestore()<CR>
 map <Leader>cmd :call CmdPromptHere()<CR>
-map <Leader>fi :call ExplorerHere()<CR>
+map <Leader><Leader>f :call ExplorerHere()<CR>
 map <Leader>t :NERDTreeToggle<CR>
 "On very rare occasions randomizing a list is useful
 "Below mapping binds it to a key
