@@ -89,7 +89,7 @@ set omnifunc=syntaxcomplete#Complete
 set foldmethod=indent
 set foldlevel=10
 set pastetoggle=<Leader>p
-set relativenumber      "Make line numbers relative to where you currently are
+" set relativenumber      "Make line numbers relative to where you currently are
 
 " Enable persistent undo (I guess only for vim 7.3)
 if v:version >= 703 
