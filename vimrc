@@ -131,9 +131,9 @@ nnoremap <leader><space> :noh<cr>
 " Autocomplete an HTML tag (from insert mode)
 imap <C-a> </<C-x><C-o><Esc>==$a
 " Toggle line numbers
-map <Leader>n <Esc>:call Toggle_number()<CR>
+map <Leader>\n <Esc>:call Toggle_number()<CR>
 " Toggle mouse support
-map <Leader>mo <Esc>:call Toggle_mouse()<CR>
+map <Leader>\m <Esc>:call Toggle_mouse()<CR>
 " Edit current .vimrc
 map <Leader>rc <Esc><C-w>n:e $MYVIMRC<CR>
 " Reload current .vimrc
@@ -236,13 +236,14 @@ map <F10> :call MaxOrRestore()<CR>
 map <Leader>cmd :call CmdPromptHere()<CR>
 map <Leader>ef :call ExplorerHere()<CR>
 map <Leader>t :NERDTreeToggle<CR>
+map <Leader>\t :NERDTreeFind<CR>
 "On very rare occasions randomizing a list is useful
 "Below mapping binds it to a key
 map <Leader>r :%!perl -e 'use List::Util 'shuffle'; print shuffle(<>);'<cr>
 "copy current file's full path to system clipboard
-map <Leader>fn :let @+='"'.expand("%").'"'<cr>
+map <Leader>\fn :let @+='"'.expand("%").'"'<cr>
 " the same but for only the working directory
-map <Leader>fp :let @+='"'.getcwd().'"'<cr>
+map <Leader>\fp :let @+='"'.getcwd().'"'<cr>
 "Misc var settings
 map <Leader>gu <Esc>:GundoToggle<CR>
 """"" Create a centered comment header (like this one) """""
