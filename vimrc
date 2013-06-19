@@ -90,6 +90,7 @@ set foldmethod=indent
 set foldlevel=10
 set pastetoggle=<Leader>p
 " set relativenumber      "Make line numbers relative to where you currently are
+set cryptmethod=blowfish  "Use blowfish instead of crappy zip algorithm if we use vim encryption
 
 " Enable persistent undo (I guess only for vim 7.3)
 if v:version >= 703 
@@ -139,12 +140,20 @@ map <Leader>rc <Esc><C-w>n:e $MYVIMRC<CR>
 " Reload current .vimrc
 map <Leader>rrc <Esc>:source $MYVIMRC<CR>
 
+" Bind 'Dash' lookup to 'm' (looks up word under key with Dash) if we're
+" running on a mac
+if has("mac") 
+    nnoremap <Leader>k :Dash<CR>
+endif
+
 " Open yankring
 map <Leader>yr :YRShow<CR>
-nnoremap Y y$
 " make Y yank to end of line rather than yanking whole line to be consistent
 " with C and D
-nnoremap Y y$
+"
+" This `nnoremap Y y$ ` gets overridden by below when YankRing calls the YRRunAfterMaps()
+" function
+nnoremap Y y$ 
 " Yankring compatible version of above
 function! YRRunAfterMaps()
     nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
