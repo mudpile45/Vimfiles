@@ -492,6 +492,17 @@ function! CreateHeader(string, ...)
     return result
 endfunction
 
+
+"smart indent when entering insert mode with i on empty lines
+function! IndentWithI()
+    if len(getline('.')) == 0
+        return "cc"
+    else
+        return "i"
+    endif
+endfunction
+nnoremap <expr> i IndentWithI()
+
 """""""""""""""""""""""""""""""""""""""
 "  Start Tagbar Coffeescript support  "
 """""""""""""""""""""""""""""""""""""""
