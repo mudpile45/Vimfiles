@@ -496,7 +496,10 @@ endfunction
 "smart indent when entering insert mode with i on empty lines
 function! IndentWithI()
     if len(getline('.')) == 0
-        return "cc"
+        " delete the current line (it's empty anyway), move up a line and use
+        " o to start this line at the right indentation since `cc` command
+        " doesn't seem to work as expected in python
+        return "ddko" 
     else
         return "i"
     endif
