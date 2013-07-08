@@ -17,7 +17,7 @@ map <Leader>f :CtrlP<CR>
 
 " Python-mode.vim settings
     " Don't show as many whitespace warnings from python linters
-    let g:pymode_lint_ignore = "E2" 
+    let g:pymode_lint_ignore = "E2,E501" 
 
 " Task-list.vim remapping
     " Task list by default sets mapping to <Leader>t, but I use that for
@@ -212,6 +212,41 @@ map <Leader>td <Esc>:tabclose<CR>
 "Save session (using session plugin)
 map <Leader>ss <Esc>:SaveSession<CR>
 map <Leader>so <Esc>:OpenSession 
+
+" Emacs-like bindings for insert mode
+    "TODO: Need to add nonGUI bindings
+    " undo
+    inoremap <C-z> <C-o>u
+    " Redo
+    inoremap <C-r> <C-o><C-r>
+    " Paste
+    inoremap <C-y> <C-o>P
+    "Delete to beginning of line
+    inoremap <C-k> <C-o>d$
+    "Delete to end of line
+    inoremap <C-u> <C-o>d0
+    " Move to beg of line
+    inoremap <C-a> <C-o>0
+    " Move to end of line
+    inoremap <C-e> <C-o>$
+    " Move forward one word
+    inoremap ƒ <C-o>w
+    " Move backward one word
+    inoremap ∂ <C-o>b
+    " delete one word forward
+    inoremap <C-d> <C-o>dw
+    " delete one word backward
+    inoremap <C-w> <C-o>db
+    "Move down one line (not emacs like cause <C-n> and <C-p> are taken)
+    inoremap ∆ <C-o>j
+    "Move up one line (not emacs like cause <C-n> and <C-p> are taken)
+    inoremap ˚ <C-o>k
+    "Move right (not emacs like cause <C-n> and <C-p> are taken)
+    inoremap ¬ <C-o>l
+    "Move left (not emacs like cause <C-n> and <C-p> are taken)
+    inoremap ˙ <C-o>h
+
+
 
 " Open coffeescript preview
 map <Leader>csp <Esc>:CoffeePreviewToggle<CR>
@@ -504,7 +539,7 @@ endfunction
 
 "smart indent when entering insert mode with i on empty lines
 function! IndentWithI()
-    if len(getline('.')) == 0
+    if len(getline('.')) == 0 && line('.') > 1
         " delete the current line (it's empty anyway), move up a line and use
         " o to start this line at the right indentation since `cc` command
         " doesn't seem to work as expected in python
