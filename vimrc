@@ -18,6 +18,8 @@ map <Leader>f :CtrlP<CR>
 " Python-mode.vim settings
     " Don't show as many whitespace warnings from python linters
     let g:pymode_lint_ignore = "E2,E501" 
+    let g:pymode_lint_cwindow = 0
+    
 
 " Task-list.vim remapping
     " Task list by default sets mapping to <Leader>t, but I use that for
@@ -234,7 +236,7 @@ map <Leader>so <Esc>:OpenSession
     " Move backward one word
     inoremap ∂ <C-o>b
     " delete one word forward
-    inoremap <C-d> <C-o>dw
+    " inoremap <C-d> <C-o>dw
     " delete one word backward
     inoremap <C-w> <C-o>db
     "Move down one line (not emacs like cause <C-n> and <C-p> are taken)
