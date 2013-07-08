@@ -15,6 +15,15 @@ map <Leader>m :CtrlPMRU<CR>
 map <Leader>b :CtrlPBuffer<CR>
 map <Leader>f :CtrlP<CR>
 
+" Python-mode.vim settings
+    " Don't show as many whitespace warnings from python linters
+    let g:pymode_lint_ignore = "E2" 
+
+" Task-list.vim remapping
+    " Task list by default sets mapping to <Leader>t, but I use that for
+    " NERDTree, so reset it to <Leader>tl
+    map <Leader>tl <Plug>TaskList 
+
 " Make orgmode use the current file
 "     This is needed so that todo <Leader>cat and Agenda <Leader>caL modes work
 map <Leader>cac :let g:org_agenda_files = [expand("%:p")]<CR>
