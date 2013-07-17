@@ -234,7 +234,7 @@ map <Leader>so <Esc>:OpenSession
     " Move forward one word
     inoremap ƒ <C-o>w
     " Move backward one word
-    inoremap ∂ <C-o>b
+    inoremap ∫ <C-o>b
     " delete one word forward
     " inoremap <C-d> <C-o>dw
     " delete one word backward
