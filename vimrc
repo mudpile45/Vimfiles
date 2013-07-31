@@ -289,7 +289,8 @@ map <C-Right> :tabnext
 
 map <F10> :call MaxOrRestore()<CR>
 map <Leader>cmd :call CmdPromptHere()<CR>
-map <Leader>ef :call ExplorerHere()<CR>
+"Pneumonic: of = Open Finder"
+map <Leader>of :call ExplorerHere()<CR>
 map <Leader>t :NERDTreeToggle<CR>
 map <Leader>\t :NERDTreeFind<CR>
 "On very rare occasions randomizing a list is useful
