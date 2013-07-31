@@ -16,52 +16,52 @@ map <Leader>b :CtrlPBuffer<CR>
 map <Leader>f :CtrlP<CR>
 
 " Python-mode.vim settings
-    " Don't show as many whitespace warnings from python linters
-    let g:pymode_lint_ignore = "E2,E501" 
-    let g:pymode_lint_cwindow = 0
-    
+  " Don't show as many whitespace warnings from python linters
+  let g:pymode_lint_ignore = "E2,E501" 
+  let g:pymode_lint_cwindow = 0
+  
 
 " Task-list.vim remapping
-    " Task list by default sets mapping to <Leader>t, but I use that for
-    " NERDTree, so reset it to <Leader>tl
-    map <Leader>tl <Plug>TaskList 
+  " Task list by default sets mapping to <Leader>t, but I use that for
+  " NERDTree, so reset it to <Leader>tl
+  map <Leader>tl <Plug>TaskList 
 
 " Make orgmode use the current file
-"     This is needed so that todo <Leader>cat and Agenda <Leader>caL modes work
+"   This is needed so that todo <Leader>cat and Agenda <Leader>caL modes work
 map <Leader>cac :let g:org_agenda_files = [expand("%:p")]<CR>
 map <Leader>cah :silent ! emacs -batch --visit="%" --funcall org-export-as-html-batch<CR>
 map <Leader>cam :silent ! emacs -batch --visit="%" --funcall org-export-as-html-batch; pandoc -s "%:r".html -t markdown_strict > "%:r".md<CR>
 
 
 let g:ctrlp_custom_ignore = {
-            \ 'dir':  'node_modules',
-            \}
+      \ 'dir':  'node_modules',
+      \}
 map <Leader>i :IndentGuidesToggle<CR>
 
 " Use OS X clipboard even inside tmux sessions
 let g:fakeclip_terminal_multiplexer_type = "unknown"
 
 if has('win32')  " Windows settings
-    " Fix Chinese characters
-    set guifontwide=NSimsun
-    " Paste
-    map <S-Insert>      "+gP
-    " Copy
-    vnoremap <C-Insert> "+y
-    " Cut
-    vnoremap <S-Del> "+x
-    behave mswin
-    "Enable mapping for Chinese font
-    map <Leader>U :set guifont=<CR>
-    map <Leader>u :set guifont=MingLiU:h10:cANSI<CR>
-    if hostname() == "ONEIDA"
-        " This mapping only gets used at work
-        map <F2> mx:silent ! beautifyxml %:e`x
-    endif
-    let $EDITOR="notepad"
+  " Fix Chinese characters
+  set guifontwide=NSimsun
+  " Paste
+  map <S-Insert>    "+gP
+  " Copy
+  vnoremap <C-Insert> "+y
+  " Cut
+  vnoremap <S-Del> "+x
+  behave mswin
+  "Enable mapping for Chinese font
+  map <Leader>U :set guifont=<CR>
+  map <Leader>u :set guifont=MingLiU:h10:cANSI<CR>
+  if hostname() == "ONEIDA"
+    " This mapping only gets used at work
+    map <F2> mx:silent ! beautifyxml %:e`x
+  endif
+  let $EDITOR="notepad"
 else
-    let $EDITOR="vim"
-endif    
+  let $EDITOR="vim"
+endif  
 
 
 set fileencoding=utf8
@@ -70,10 +70,10 @@ set backspace=indent,eol,start    " allow backspacing over everything in insert 
 set modelines=1
 set noswapfile
 set wildmode=list:longest  "Make filename completion work like bash's
-set history=1000           " keep 50 lines of command line history
-set ruler		           " show the cursor position all the time
-set showcmd		           " display incomplete commands
-set incsearch	           " do incremental searching
+set history=1000       " keep 50 lines of command line history
+set ruler          " show the cursor position all the time
+set showcmd          " display incomplete commands
+set incsearch        " do incremental searching
 set visualbell
 set expandtab
 set tabstop=4
@@ -87,28 +87,28 @@ set virtualedit=all
 set ic
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set tabstop=4
-set number				" line numbers
+set number        " line numbers
 set cindent
 set autoindent
-set scrolloff=5 		" 5 lines bevore and after the current line when scrolling
-set ignorecase			" ignore case
-set smartcase			" but don't ignore it, when search string contains uppercase letters
-set hidden 				" allow switching buffers, which have unsaved changes
-set shiftwidth=4		" 4 characters for indenting
+set scrolloff=5     " 5 lines bevore and after the current line when scrolling
+set ignorecase      " ignore case
+set smartcase     " but don't ignore it, when search string contains uppercase letters
+set hidden        " allow switching buffers, which have unsaved changes
+set shiftwidth=4    " 4 characters for indenting
 set omnifunc=syntaxcomplete#Complete
 " folds are nice, but not till i want them
 set foldmethod=indent
 set foldlevel=10
 set pastetoggle=<Leader>p
-" set relativenumber      "Make line numbers relative to where you currently are
+" set relativenumber    "Make line numbers relative to where you currently are
 set cryptmethod=blowfish  "Use blowfish instead of crappy zip algorithm if we use vim encryption
 
 " Enable persistent undo (I guess only for vim 7.3)
 if v:version >= 703 
-    set undodir=~/.vim/undodir
-    set undofile
-    set undolevels=10000 "maximum number of changes that can be undone
-    set undoreload=100000 "maximum number lines to save for undo on a buffer reload
+  set undodir=~/.vim/undodir
+  set undofile
+  set undolevels=10000 "maximum number of changes that can be undone
+  set undoreload=100000 "maximum number lines to save for undo on a buffer reload
 endif 
 
 " Always show status bar
@@ -121,7 +121,7 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
   if &t_Co >= 256 || has("gui_running")
-      colors xoria256 
+    colors xoria256 
   endif
 endif
 
@@ -154,7 +154,7 @@ map <Leader>rrc <Esc>:source $MYVIMRC<CR>
 " Bind 'Dash' lookup to 'm' (looks up word under key with Dash) if we're
 " running on a mac
 if has("mac") 
-    nnoremap <Leader>k :Dash<CR>
+  nnoremap <Leader>k :Dash<CR>
 endif
 
 " Open yankring
@@ -167,7 +167,7 @@ map <Leader>yr :YRShow<CR>
 nnoremap Y y$ 
 " Yankring compatible version of above
 function! YRRunAfterMaps()
-    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+  nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
 endfunction
 
 "Change to cwd mappings
@@ -216,35 +216,35 @@ map <Leader>ss <Esc>:SaveSession<CR>
 map <Leader>so <Esc>:OpenSession 
 
 " Emacs-like bindings for insert mode
-    "TODO: Need to add nonGUI bindings
-    " undo
-    inoremap <C-z> <C-o>u
-    " Paste
-    inoremap <C-y> <C-o>P
-    "Delete to beginning of line
-    inoremap <C-k> <C-o>d$
-    "Delete to end of line
-    inoremap <C-u> <C-o>d0
-    " Move to beg of line
-    inoremap <C-a> <C-o>0
-    " Move to end of line
-    inoremap <C-e> <C-o>$
-    " Move forward one word
-    inoremap ƒ <C-o>w
-    " Move backward one word
-    inoremap ∫ <C-o>b
-    " delete one word forward
-    " inoremap <C-d> <C-o>dw
-    " delete one word backward
-    inoremap <C-w> <C-o>db
-    "Move down one line (not emacs like cause <C-n> and <C-p> are taken)
-    inoremap ∆ <C-o>j
-    "Move up one line (not emacs like cause <C-n> and <C-p> are taken)
-    inoremap ˚ <C-o>k
-    "Move right (not emacs like cause <C-n> and <C-p> are taken)
-    inoremap ¬ <C-o>l
-    "Move left (not emacs like cause <C-n> and <C-p> are taken)
-    inoremap ˙ <C-o>h
+  "TODO: Need to add nonGUI bindings
+  " undo
+  inoremap <C-z> <C-o>u
+  " Paste
+  inoremap <C-y> <C-o>P
+  "Delete to beginning of line
+  inoremap <C-k> <C-o>d$
+  "Delete to end of line
+  inoremap <C-u> <C-o>d0
+  " Move to beg of line
+  inoremap <C-a> <C-o>0
+  " Move to end of line
+  inoremap <C-e> <C-o>$
+  " Move forward one word
+  inoremap ƒ <C-o>w
+  " Move backward one word
+  inoremap ∫ <C-o>b
+  " delete one word forward
+  " inoremap <C-d> <C-o>dw
+  " delete one word backward
+  inoremap <C-w> <C-o>db
+  "Move down one line (not emacs like cause <C-n> and <C-p> are taken)
+  inoremap ∆ <C-o>j
+  "Move up one line (not emacs like cause <C-n> and <C-p> are taken)
+  inoremap ˚ <C-o>k
+  "Move right (not emacs like cause <C-n> and <C-p> are taken)
+  inoremap ¬ <C-o>l
+  "Move left (not emacs like cause <C-n> and <C-p> are taken)
+  inoremap ˙ <C-o>h
 
 
 
@@ -326,15 +326,15 @@ if has("autocmd")
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
   autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" |
+  \ endif
 
   augroup END
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent    " always set autoindenting on
 
 endif " has("autocmd")
 let g:perlOn = "no"
@@ -342,48 +342,48 @@ let g:perlOn = "no"
 " Functions
 "set diffexpr=MyDiff()
 "function! MyDiff()
-"    let opt = '-a --binary '
-"    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-"    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-"    let arg1 = v:fname_in
-"    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-"    let arg2 = v:fname_new
-"    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-"    let arg3 = v:fname_out
-"    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-"    let eq = ''
-"    if $VIMRUNTIME =~ ' '
-"    if &sh =~ '\<cmd'
-"    let cmd = '""' . $VIMRUNTIME . '\diff"'
-"    let eq = '"'
-"    else
-"    let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-"            endif
-"            else
-"            let cmd = $VIMRUNTIME . '\diff'
-"            endif
-"            silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+"  let opt = '-a --binary '
+"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+"  let arg1 = v:fname_in
+"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"  let arg2 = v:fname_new
+"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"  let arg3 = v:fname_out
+"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"  let eq = ''
+"  if $VIMRUNTIME =~ ' '
+"  if &sh =~ '\<cmd'
+"  let cmd = '""' . $VIMRUNTIME . '\diff"'
+"  let eq = '"'
+"  else
+"  let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+"      endif
+"      else
+"      let cmd = $VIMRUNTIME . '\diff'
+"      endif
+"      silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 "endfunction
 
 function! Toggle_mouse()
-    if &mouse == "a"
-        set mouse=
-        echo "Mouse support disabled"
-    else
-        set mouse=a
-        echo "Mouse support enabled"
-    endif
+  if &mouse == "a"
+    set mouse=
+    echo "Mouse support disabled"
+  else
+    set mouse=a
+    echo "Mouse support enabled"
+  endif
 endfunction
 
 function! Toggle_number()
-    "Toggles between relative line #s, standard line #s and no numbering
-    if &number == 1
-        set nonumber
-    elseif &relativenumber == 1
-        set number
-    elseif &relativenumber == 0 && &number == 0
-        set relativenumber
-    endif
+  "Toggles between relative line #s, standard line #s and no numbering
+  if &number == 1
+    set nonumber
+  elseif &relativenumber == 1
+    set number
+  elseif &relativenumber == 0 && &number == 0
+    set relativenumber
+  endif
 endfunction
 
 autocmd BufEnter *.pl call PerlOn()
@@ -392,161 +392,183 @@ autocmd BufEnter *.pm call PerlOn()
 autocmd BufLeave *.pm call PerlOff()
 
 function! PerlOn()
-    "Assumes perltidy is in path
-    map <F3> mx:%!perltidy -l=100`x  
-    map <C-F11> :silent ! perl % && pause<CR>
-    map <F11> :silent ! start perl -d %<CR>
-    "Look up current word in perldoc
-    map  :call PerlDoc()<CR>
-    map <F5> :silent ! perl -wc % > syntax.txt 2>&1<CR>vl:e syntax.txt<CR>h
-"   imap ( ()i
-"    imap < <>i 
-"   imap [ []i
-"   imap ' ="''"<CR>i
-"   imap " ='""'<CR>i
-"    imap { {}i
-"   echo 'Perl key bindings enabled'
-    let g:perlOn = "yes"
+  "Assumes perltidy is in path
+  map <F3> mx:%!perltidy -l=100`x  
+  map <C-F11> :silent ! perl % && pause<CR>
+  map <F11> :silent ! start perl -d %<CR>
+  "Look up current word in perldoc
+  map  :call PerlDoc()<CR>
+  map <F5> :silent ! perl -wc % > syntax.txt 2>&1<CR>vl:e syntax.txt<CR>h
+" imap ( ()i
+"  imap < <>i 
+" imap [ []i
+" imap ' ="''"<CR>i
+" imap " ='""'<CR>i
+"  imap { {}i
+" echo 'Perl key bindings enabled'
+  let g:perlOn = "yes"
 endfunction
 
 function! PerlOff()
    if g:perlOn == "yes"
-       unmap <F3>
-       unmap <C-F11>
-       unmap <F11>
-       unmap 
-       unmap <F5>
+     unmap <F3>
+     unmap <C-F11>
+     unmap <F11>
+     unmap 
+     unmap <F5>
    endif
    let g:perlOn = "no"
 "  echo 'Perl key bindings disabled'
 endfunction
 
 function! MaxOrRestore()
-    if has("win32")
-        if g:maxxedOut == "no"
-            simalt ~x
-            let g:maxxedOut = "yes"
-        else
-            simalt ~r
-            let g:maxxedOut = "no"
-        endif
+  if has("win32")
+    if g:maxxedOut == "no"
+      simalt ~x
+      let g:maxxedOut = "yes"
     else
-        echo "MaxOrRestore only supported on windows"
+      simalt ~r
+      let g:maxxedOut = "no"
     endif
+  else
+    echo "MaxOrRestore only supported on windows"
+  endif
 endfunction
 
 function! CmdPromptHere()
-    let vimPath = getcwd()
-    call ChdirHere()
-    " if has("win32")
-    "     silent execute '! start cmd'
-    " elseif has("mac")
-        " Should really move this out to a plugin, for now rely iTerm.sh
-        " utility in DB path (stolen from sublime)
-        " silent execute '! iTerm.sh '
-        silent execute '! Terminal.sh '
-    " endif
-    execute ':chdir ' . vimPath
+  let vimPath = getcwd()
+  call ChdirHere()
+  " if has("win32")
+  "   silent execute '! start cmd'
+  " elseif has("mac")
+    " Should really move this out to a plugin, for now rely iTerm.sh
+    " utility in DB path (stolen from sublime)
+    " silent execute '! iTerm.sh '
+    silent execute '! Terminal.sh '
+  " endif
+  execute ':chdir ' . vimPath
 endfunction
 
 function! ExplorerHere()
-    let vimPath = getcwd()
-    let curPath = substitute(substitute(expand("%"), "\\", "/","g"), "[^/]*$","", "")
-    call ChdirHere()
-    if has("win32")
-        silent execute '! start .'
-    elseif has("mac")
-        silent execute '! open .'
-    endif
-    execute ':chdir ' . vimPath
+  let vimPath = getcwd()
+  let curPath = substitute(substitute(expand("%"), "\\", "/","g"), "[^/]*$","", "")
+  call ChdirHere()
+  if has("win32")
+    silent execute '! start .'
+  elseif has("mac")
+    silent execute '! open .'
+  endif
+  execute ':chdir ' . vimPath
 endfunction
 
 function! ChdirHere()
-    let thePath = substitute(substitute(expand("%"), "\\", "/","g"), "[^/]*$","", "") 
-    "take care of escaping spaces
-    let thePath = substitute(thePath, " ", "\\\\ ", "g")
-    let thePath = substitute(thePath, "/$","","")
-    if thePath != ""
-        execute 'cd ' . thePath 
-    endif
-    
-    "hack around to make the escaped spaces match vims functions
-    let thePath = substitute(thePath, "\\\\ ", " ", "g")
-    if  getcwd() == thePath 
-        echo "Pwd changed to " . getcwd()
-    elseif thePath == "" 
-        echo "Already in " . getcwd()
-    else
-        echo "Failed to change from " . getcwd() . " to " . thePath 
-    endif
-    "echo "[" . thePath . "]"
+  let thePath = substitute(substitute(expand("%"), "\\", "/","g"), "[^/]*$","", "") 
+  "take care of escaping spaces
+  let thePath = substitute(thePath, " ", "\\\\ ", "g")
+  let thePath = substitute(thePath, "/$","","")
+  if thePath != ""
+    execute 'cd ' . thePath 
+  endif
+  
+  "hack around to make the escaped spaces match vims functions
+  let thePath = substitute(thePath, "\\\\ ", " ", "g")
+  if  getcwd() == thePath 
+    echo "Pwd changed to " . getcwd()
+  elseif thePath == "" 
+    echo "Already in " . getcwd()
+  else
+    echo "Failed to change from " . getcwd() . " to " . thePath 
+  endif
+  "echo "[" . thePath . "]"
 endfunction
 
 function! PerlDoc()
-    let theLine = getline(".")
-    if match(theLine, "^use.*;$") >= 0  "Is a use statement (and thus also a perl module)
-        let moduleName = substitute(theLine, "use \\([^ ;]*\\).*", "\\1", "")
-        let result = system("perldoc -t 2>/dev/null " . moduleName)
-    elseif match(theLine, "::") >= 0   "Is a perl module
-        let moduleName = substitute(theLine, "^.* \\(\\w*::[^ ;]*\\).*", "\\1","")
-        let result = system("perldoc -t 2>/dev/null " . moduleName)
-    else
-        let temp = @a
-        exec "normal miwb\"ayw`i"   
-        let result = system("perldoc -t -f " . @a)
-        let @a = temp
-    endif
+  let theLine = getline(".")
+  if match(theLine, "^use.*;$") >= 0  "Is a use statement (and thus also a perl module)
+    let moduleName = substitute(theLine, "use \\([^ ;]*\\).*", "\\1", "")
+    let result = system("perldoc -t 2>/dev/null " . moduleName)
+  elseif match(theLine, "::") >= 0   "Is a perl module
+    let moduleName = substitute(theLine, "^.* \\(\\w*::[^ ;]*\\).*", "\\1","")
+    let result = system("perldoc -t 2>/dev/null " . moduleName)
+  else
     let temp = @a
-    let @a = result
-    exec "normal n\"aP"
-    set buftype=nofile
-    set bufhidden=hide
-    setlocal noswapfile
+    exec "normal miwb\"ayw`i" 
+    let result = system("perldoc -t -f " . @a)
     let @a = temp
+  endif
+  let temp = @a
+  let @a = result
+  exec "normal n\"aP"
+  set buftype=nofile
+  set bufhidden=hide
+  setlocal noswapfile
+  let @a = temp
 endfunction
 "endif
 
+function! TwoToFour()
+  " Set two space indents to 4 space (for languages where whitepsace matters
+  " like CoffeeScript or Python)
+  "
+  " Works by setting tabstops to 2, retabbing it to use hard tabs, setting
+  " it back go 4 and then converting tabs to spaces again.
+  set ts=2 sts=2 noet
+  retab!
+  set ts=4 sts=4 et
+  retab!
+endfunction
+
+
+function! FourToTwo()
+  " Opposite of above
+  set ts=4 sts=4 noet
+  retab!
+  set ts=2 sts=2 et
+  retab!
+endfunction
+
+
 function! CreateHeader(string, ...)
-    " CreateHeader(string, delim)
-    if a:string == ""
-        exec "normal! \"ay"
-        let string = @a
-    else
-        let string = a:string
-    endif
-    if a:0 < 1
-        let delim = "="
-    else
-        let delim = a:1
-    endif
-    let width = &textwidth
-    let startPos = (width / 2) - (len(string) / 2)
-    let i = 0
-    let result = ""
-    while i < startPos
-        let result = result . delim
-        let i = i + 1
-    endwhile
-    let result = result . string
-    let i = i + len(string)
-    while i < width
-        let result = result . delim
-        let i = i + 1
-    endwhile
-    return result
+  " CreateHeader(string, delim)
+  if a:string == ""
+    exec "normal! \"ay"
+    let string = @a
+  else
+    let string = a:string
+  endif
+  if a:0 < 1
+    let delim = "="
+  else
+    let delim = a:1
+  endif
+  let width = &textwidth
+  let startPos = (width / 2) - (len(string) / 2)
+  let i = 0
+  let result = ""
+  while i < startPos
+    let result = result . delim
+    let i = i + 1
+  endwhile
+  let result = result . string
+  let i = i + len(string)
+  while i < width
+    let result = result . delim
+    let i = i + 1
+  endwhile
+  return result
 endfunction
 
 
 "smart indent when entering insert mode with i on empty lines
 function! IndentWithI()
-    if len(getline('.')) == 0 && line('.') > 1
-        " delete the current line (it's empty anyway), move up a line and use
-        " o to start this line at the right indentation since `cc` command
-        " doesn't seem to work as expected in python
-        return "ddko" 
-    else
-        return "i"
-    endif
+  if len(getline('.')) == 0 && line('.') > 1
+    " delete the current line (it's empty anyway), move up a line and use
+    " o to start this line at the right indentation since `cc` command
+    " doesn't seem to work as expected in python
+    return "ddko" 
+  else
+    return "i"
+  endif
 endfunction
 nnoremap <expr> i IndentWithI()
 
@@ -555,14 +577,14 @@ nnoremap <expr> i IndentWithI()
 """""""""""""""""""""""""""""""""""""""
 set tags=tags
 let g:tagbar_type_coffee = {
-    \ 'ctagstype' : 'coffee',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 'm:methods',
-        \ 'f:functions',
-        \ 'v:variables',
-        \ 'f:fields',
-    \ ]
+  \ 'ctagstype' : 'coffee',
+  \ 'kinds'   : [
+    \ 'c:classes',
+    \ 'm:methods',
+    \ 'f:functions',
+    \ 'v:variables',
+    \ 'f:fields',
+  \ ]
 \ }
 
 " Posix regular expressions for matching interesting items. Since this will 
