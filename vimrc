@@ -191,6 +191,7 @@ noremap gk k
 " so rather than retrain the fingers, just make Vim remap it
 vmap ,ci gc
 map ,ci gcc<Esc>
+call tcomment#DefineType('iced',             '# %s'             )
 
 " ConqueShell mappings
 " map <Leader>cs <Esc>:ConqueTerm bash<CR>
