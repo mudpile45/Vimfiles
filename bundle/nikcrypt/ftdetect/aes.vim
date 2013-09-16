@@ -22,6 +22,15 @@ function! s:NikCryptReadPre()
     set noshelltemp
     set shell=/bin/sh
     set bin
+    " New versions of vim store undo stuff in a file--we don't want that for
+    " pw protected stuff
+    if v:version >= 703 
+      set undodir=~/.vim/undodir
+      set noundofile
+      set undolevels=0 "maximum number of changes that can be undone
+      set undoreload=0 "maximum number lines to save for undo on a buffer reload
+    endif 
+
 endfunction
 
 function! s:NikCryptReadPost()
