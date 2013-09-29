@@ -168,7 +168,22 @@ nnoremap Y y$
 " Yankring compatible version of above
 function! YRRunAfterMaps()
   nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+  
+  "=============================== start gp map ==============================
+  " this needs to be in this function otherwise yankring clobbers it
+
+  " select just pasted text (and preserve mode)
+  " from: http://vim.wikia.com/wiki/Selecting_your_pasted_text
+  " nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+  "this is this simple version: 
+  nnoremap gp `[V`]
+  " cooler more elaborate version
+  nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+  "============================== end gp map =================================
 endfunction
+" stop yankring from hijacking gp mapping
+let g:yankring_paste_using_g = 1
 
 "Change to cwd mappings
 map <F8> :call ChdirHere()<CR> 
@@ -265,10 +280,6 @@ vmap < <gv
 vmap > >gv
 vmap < <gv
 
-" select just pasted text (and preserve mode)
-" from: http://vim.wikia.com/wiki/Selecting_your_pasted_text
-" nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-nnoremap gp `[V`]
 " 
 " And allow using tab and shift-tab to in/de-dent as well it in insert mode
 "Seems <S-Tab> doesn't work very well, so use this escape code
@@ -304,9 +315,6 @@ map <Leader>gu <Esc>:GundoToggle<CR>
 """"" Create a centered comment header (like this one) """""
 map <Leader>cc <Esc>:let tmp=@z<CR>0"zY<Esc>:let @z = CreateHeader(@z)<CR>V"zP<Esc>:let @z=tmp<CR>
 """""""""""" End create centered comment headers """"""""""""
-
-" Map gp to select just pasted text
-noremap gp V`]
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
