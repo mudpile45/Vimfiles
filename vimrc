@@ -7,6 +7,10 @@ let g:node_usejscomplete = 1
 
 let g:UltiSnipsListSnippets = "<Leader><tab>"
 
+" Bufexplorer customizations
+let g:bufExplorerFindActive=0        " Do not go to active window.
+let g:bufExplorerShowRelativePath=1  " Show relative paths.
+
 " CtrlP customizations
 let mapleader=","
 let g:ctrlp_map = '<Leader>o'
