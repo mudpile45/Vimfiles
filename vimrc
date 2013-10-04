@@ -147,7 +147,7 @@ nnoremap <leader><space> :noh<cr>
 " Autocomplete an HTML tag (from insert mode)
 imap <C-a> </<C-x><C-o><Esc>==$a
 " Toggle line numbers
-map <Leader>\n <Esc>:call Toggle_number()<CR>
+map <Leader>n <Esc>:call Toggle_number()<CR>
 " Toggle mouse support
 map <Leader>\m <Esc>:call Toggle_mouse()<CR>
 " Edit current .vimrc
