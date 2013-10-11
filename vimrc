@@ -302,9 +302,13 @@ map <C-PageDown> :bn
 map <C-Left> :tabprev
 map <C-Right> :tabnext
 
+" Don't show help when i hit F1, I'm usually trying to hit escape anyways
+map <F1> <Esc>
+imap <F1> <Esc>
+
 map <F10> :call MaxOrRestore()<CR>
 map <Leader>cmd :call CmdPromptHere()<CR>
-map <Leader>ef :call ExplorerHere()<CR>
+map <Leader>eh :call ExplorerHere()<CR>
 map <Leader>t :NERDTreeToggle<CR>
 map <Leader>\t :NERDTreeFind<CR>
 "On very rare occasions randomizing a list is useful
