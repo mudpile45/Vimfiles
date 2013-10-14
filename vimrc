@@ -20,6 +20,9 @@ map <Leader>m :CtrlPMRU<CR>
 map <Leader>b :CtrlPBuffer<CR>
 map <Leader>f :CtrlP<CR>
 
+" more memorable mapping for color selector plugin
+command ColorSelector SelectColorS
+
 " Python-mode.vim settings
   " Don't show as many whitespace warnings from python linters
   let g:pymode_lint_ignore = "E2,E501" 
