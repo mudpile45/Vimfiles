@@ -6,6 +6,7 @@ autocmd FileType javascript
 let g:node_usejscomplete = 1
 
 let g:UltiSnipsListSnippets = "<Leader><tab>"
+command UltiSnipsView :e ~/.vim/bundle/UltiSnips/UltiSnips/
 
 " Bufexplorer customizations
 let g:bufExplorerFindActive=0        " Do not go to active window.
