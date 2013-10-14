@@ -6,7 +6,7 @@ autocmd FileType javascript
 let g:node_usejscomplete = 1
 
 let g:UltiSnipsListSnippets = "<Leader><tab>"
-command UltiSnipsView :e ~/.vim/bundle/UltiSnips/UltiSnips/
+command! UltiSnipsView :e ~/.vim/bundle/UltiSnips/UltiSnips/
 
 " Bufexplorer customizations
 let g:bufExplorerFindActive=0        " Do not go to active window.
@@ -21,7 +21,7 @@ map <Leader>b :CtrlPBuffer<CR>
 map <Leader>f :CtrlP<CR>
 
 " more memorable mapping for color selector plugin
-command ColorSelector SelectColorS
+command! ColorSelector SelectColorS
 
 " Python-mode.vim settings
   " Don't show as many whitespace warnings from python linters
