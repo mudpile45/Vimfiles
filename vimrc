@@ -313,6 +313,7 @@ imap <F1> <Esc>
 map <F10> :call MaxOrRestore()<CR>
 map <Leader>cmd :call CmdPromptHere()<CR>
 map <Leader>eh :call ExplorerHere()<CR>
+map <Leader>\f :call ExplorerHere()<CR>
 map <Leader>t :NERDTreeToggle<CR>
 map <Leader>\t :NERDTreeFind<CR>
 "On very rare occasions randomizing a list is useful
@@ -478,7 +479,7 @@ function! ExplorerHere()
   if has("win32")
     silent execute '! start .'
   elseif has("mac")
-    silent execute '! open .'
+    silent execute '! open -R %'
   endif
   execute ':chdir ' . vimPath
 endfunction
