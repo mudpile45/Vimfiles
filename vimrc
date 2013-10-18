@@ -6,6 +6,7 @@ autocmd FileType javascript
 let g:node_usejscomplete = 1
 
 let g:UltiSnipsListSnippets = "<Leader><tab>"
+let g:UltiSnipsNoPythonWarning = 1
 command! UltiSnipsView :e ~/.vim/bundle/UltiSnips/UltiSnips/
 
 " Bufexplorer customizations
