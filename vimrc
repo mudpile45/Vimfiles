@@ -109,10 +109,10 @@ set foldmethod=indent
 set foldlevel=20
 set pastetoggle=<Leader>p
 " set relativenumber    "Make line numbers relative to where you currently are
-set cryptmethod=blowfish  "Use blowfish instead of crappy zip algorithm if we use vim encryption
 
 " Enable persistent undo (I guess only for vim 7.3)
 if v:version >= 703 
+  set cryptmethod=blowfish  "Use blowfish instead of crappy zip algorithm if we use vim encryption
   set undodir=~/.vim/undodir
   set undofile
   set undolevels=10000 "maximum number of changes that can be undone
