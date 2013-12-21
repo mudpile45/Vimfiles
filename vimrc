@@ -72,6 +72,11 @@ else
   let $EDITOR="vim"
 endif  
 
+" Ignore whitespace in diff mode
+if &diff
+    " diff mode
+    set diffopt+=iwhite
+endif
 
 set fileencoding=utf8
 set fileencodings=ucs-bom,utf8
