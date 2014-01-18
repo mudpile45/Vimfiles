@@ -134,9 +134,11 @@ set laststatus=2
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  if &t_Co >= 256 || has("gui_running")
-    colors xoria256 
-  endif
+  " if &t_Co >= 256 || has("gui_running")
+  "   colors xoria256
+  " endif
+      set background=light
+  colors solarized
 endif
 
 " Allow to write to files you don't have permissions for
