@@ -81,7 +81,7 @@ endif
 set fileencoding=utf8
 set fileencodings=ucs-bom,utf8
 set backspace=indent,eol,start    " allow backspacing over everything in insert mode
-set modelines=1
+set modelines=5
 set noswapfile
 set wildmode=list:longest  "Make filename completion work like bash's
 set history=1000       " keep 50 lines of command line history
@@ -474,8 +474,8 @@ function! CmdPromptHere()
   " elseif has("mac")
     " Should really move this out to a plugin, for now rely iTerm.sh
     " utility in DB path (stolen from sublime)
-    " silent execute '! iTerm.sh '
-    silent execute '! Terminal.sh '
+    silent execute '! iTerm.sh '
+    " silent execute '! Terminal.sh '
   " endif
   execute ':chdir ' . vimPath
 endfunction
