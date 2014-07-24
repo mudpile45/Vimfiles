@@ -223,6 +223,9 @@ noremap gk k
 " so rather than retrain the fingers, just make Vim remap it
 vmap ,ci gc
 map ,ci gcc<Esc>
+" and have the ⌘+/ map to it as well, since that's what i'm used to in
+" jetbrains
+map <D-/> ,ci
 call tcomment#DefineType('iced',             '# %s'             )
 
 " ConqueShell mappings
