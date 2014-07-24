@@ -114,6 +114,7 @@ set omnifunc=syntaxcomplete#Complete
 set foldmethod=indent
 set foldlevel=20
 set pastetoggle=<Leader>p
+set mouse=a  "Seems I use it by default
 " set relativenumber    "Make line numbers relative to where you currently are
 
 " Enable persistent undo (I guess only for vim 7.3)
